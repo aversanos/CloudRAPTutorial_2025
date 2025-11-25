@@ -1,0 +1,5 @@
+CLASS zbp_i_biglietto_sa DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_biglietto_sa.
+ENDCLASS.
+
+CLASS zbp_i_biglietto_sa IMPLEMENTATION.
+ENDCLASS.

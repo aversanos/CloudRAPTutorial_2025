@@ -1,0 +1,5 @@
+@EndUserText.label: 'Test servizio per ZC_BIGLIETTO_SA'
+define service ZUI_BIGLIETTO_SA_SRV_V2
+  provider contracts odata_v2_ui {
+  expose ZC_BIGLIETTO_SA;
+}

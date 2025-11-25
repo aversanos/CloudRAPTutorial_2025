@@ -1,0 +1,23 @@
+managed implementation in class zbp_i_biglietto_sa unique;
+strict ( 2 );
+
+define behavior for ZI_BIGLIETTO_SA //alias <alias_name>
+persistent table zbiglietto_sa
+lock master
+authorization master ( instance )
+etag master ChangedAt
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) Id;
+
+  mapping for zbiglietto_sa
+    {
+      Id        = id;
+      ChangedAt = changed_at;
+      ChangedBy = changed_by;
+      CreatedAt = created_at;
+      CreatedBy = created_by;
+    }
+}
