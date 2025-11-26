@@ -2,6 +2,7 @@ projection;
 strict ( 2 );
 
 define behavior for ZC_BIGLIETTO_SA //alias <alias_name>
+use etag
 {
   use create;
   use update;

@@ -11,5 +11,8 @@ define root view entity ZC_BIGLIETTO_SA
       biglietto.CreatedAt,
       biglietto.ChangedBy,
       biglietto.ChangedAt,
-      biglietto.Changed
+      biglietto.Changed,
+      biglietto.id_text,
+      biglietto.Nome,
+      biglietto.Cognome
 }

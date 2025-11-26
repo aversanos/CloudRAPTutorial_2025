@@ -14,8 +14,13 @@ define root view entity ZI_BIGLIETTO_SA
       @Semantics.systemDateTime.lastChangedAt: true
       biglietto.changed_at as ChangedAt,
       
+      biglietto.nome as Nome,
+      biglietto.cognome as Cognome,
+      
       @Consumption.hidden: true
       case when created_at = changed_at then ' '
       else 'X'
-      end        as Changed
+      end        as Changed,
+      
+      cast( 'ID'  as abap.char(2) ) as id_text
 }

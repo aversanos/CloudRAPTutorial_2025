@@ -10,7 +10,8 @@ etag master ChangedAt
   create ( authorization : global );
   update;
   delete;
-  field ( readonly ) Id;
+  field ( mandatory : create ) Id, Nome, Cognome;
+  field ( readonly : update ) Id;
 
   mapping for zbiglietto_sa
     {
@@ -19,5 +20,7 @@ etag master ChangedAt
       ChangedBy = changed_by;
       CreatedAt = created_at;
       CreatedBy = created_by;
+      nome = Nome;
+      cognome = Cognome;
     }
 }

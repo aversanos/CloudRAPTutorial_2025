@@ -1,0 +1,45 @@
+managed implementation in class ZBP_R_BIGLIETTO_SA2 unique;
+strict( 2 );
+with draft;
+extensible;
+define behavior for ZR_BIGLIETTO_SA2 alias ZrBigliettoSa2
+persistent table zbiglietto_sa2
+extensible
+draft table zbiglietto_sa2_d
+etag master Locallastchanged
+lock master total etag ChangedAt
+authorization master ( global )
+early numbering
+{
+
+  field ( readonly )
+  CreatedBy,
+  CreatedAt,
+  ChangedBy,
+  ChangedAt,
+  Locallastchanged;
+
+  field ( readonly ) ID;
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for zbiglietto_sa2 corresponding extensible
+    {
+      CreatedBy        = created_by;
+      CreatedAt        = created_at;
+      ChangedBy        = changed_by;
+      ChangedAt        = changed_at;
+      Nome             = nome;
+      Cognome          = cognome;
+      Locallastchanged = locallastchanged;
+    }
+
+}
