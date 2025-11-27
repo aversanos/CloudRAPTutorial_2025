@@ -17,5 +17,6 @@ define root view entity ZR_BIGLIETTO_SA2
   nome as Nome,
   cognome as Cognome,
   @Semantics.systemDateTime.localInstanceLastChangedAt: true
-  locallastchanged as Locallastchanged
+  locallastchanged as Locallastchanged,
+  status as Status
 }

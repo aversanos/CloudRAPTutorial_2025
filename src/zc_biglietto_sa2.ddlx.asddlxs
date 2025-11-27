@@ -1,6 +1,6 @@
 @Metadata.layer: #CORE
 @UI.headerInfo.title.type: #STANDARD
-@UI.headerInfo.title.label: 'ID'
+//@UI.headerInfo.title.label: 'ID'
 @UI.headerInfo.title.value: 'ID'
 @UI.headerInfo.description.type: #STANDARD
 @UI.headerInfo.description.value: 'ID'
@@ -8,115 +8,128 @@ annotate view ZC_BIGLIETTO_SA2 with
 {
   @EndUserText.label: 'ID'
   @UI.facet: [ {
-    label: 'General Information', 
-    id: 'GeneralInfo', 
-    purpose: #STANDARD, 
-    position: 10 , 
+    label: 'General Information',
+    id: 'GeneralInfo',
+    purpose: #STANDARD,
+    position: 10 ,
     type: #IDENTIFICATION_REFERENCE
   } ]
   @UI.lineItem: [ {
-    position: 10 , 
+    position: 10 ,
     label: 'ID'
+  },
+  {
+   position: 10,
+   type: #FOR_ACTION,
+   dataAction: 'CustomDelete',
+   label: 'Delete Custom'
   } ]
   @UI.selectionField: [ {
-    position: 10 
+    position: 10
   } ]
   ID;
-  
+
   @UI.identification: [ {
-    position: 20 
+    position: 20
+  },
+  {
+   position: 10,
+   type: #FOR_ACTION,
+   dataAction: 'CustomDelete',
+   label: 'Delete Custom'
   } ]
   @UI.lineItem: [ {
-    position: 20 
+    position: 20
   } ]
   @UI.selectionField: [ {
-    position: 20 
+    position: 20
   } ]
   CreatedBy;
-  
+
   @UI.identification: [ {
-    position: 30 
+    position: 30
   } ]
   @UI.lineItem: [ {
-    position: 30 
+    position: 30
   } ]
   @UI.selectionField: [ {
-    position: 30 
+    position: 30
   } ]
   CreatedAt;
-  
+
   @UI.identification: [ {
-    position: 40 
+    position: 40
   } ]
   @UI.lineItem: [ {
-    position: 40 
+    position: 40
   } ]
   @UI.selectionField: [ {
-    position: 40 
+    position: 40
   } ]
   ChangedBy;
-  
+
   @UI.identification: [ {
-    position: 50 
+    position: 50
   } ]
   @UI.lineItem: [ {
-    position: 50 
+    position: 50
   } ]
   @UI.selectionField: [ {
-    position: 50 
+    position: 50
   } ]
   ChangedAt;
-  
+
   @EndUserText.label: 'Nome'
   @UI.identification: [ {
-    position: 10 , 
+    position: 10 ,
     label: 'Nome'
   } ]
   @UI.lineItem: [ {
-    position: 60 , 
+    position: 60 ,
     label: 'Nome'
   } ]
   @UI.selectionField: [ {
-    position: 60 
+    position: 60
   } ]
   Nome;
-  
+
   @EndUserText.label: 'Cognome'
   @UI.identification: [ {
-    position: 11 , 
+    position: 11 ,
     label: 'Cognome'
   } ]
   @UI.lineItem: [ {
-    position: 70 , 
+    position: 70 ,
     label: 'Cognome'
   } ]
   @UI.selectionField: [ {
-    position: 70 
+    position: 70
   } ]
   Cognome;
-  
+
+
+  @EndUserText.label: 'Status'
   @UI.identification: [ {
-    position: 80 
-  } ]
+    position: 60 } ]
   @UI.lineItem: [ {
-    position: 80 
+    position: 60
   } ]
   @UI.selectionField: [ {
-    position: 80 
+    position: 60
   } ]
-  Locallastchanged;
-  
+  Status;
+
   @EndUserText.label: '_BaseEntity'
   @UI.identification: [ {
-    position: 90 , 
+    position: 90 ,
     label: '_BaseEntity'
   } ]
   @UI.lineItem: [ {
-    position: 90 , 
+    position: 90 ,
     label: '_BaseEntity'
   } ]
   @UI.selectionField: [ {
-    position: 90 
+    position: 90
   } ]
   _BaseEntity;
 }

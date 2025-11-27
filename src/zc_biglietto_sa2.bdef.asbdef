@@ -1,5 +1,5 @@
 projection implementation in class ZBP_C_BIGLIETTO_SA2 unique;
-strict( 2 );
+strict ( 2 );
 extensible;
 use draft;
 use side effects;
@@ -9,12 +9,16 @@ use etag
 {
   use create;
   use update;
-  use delete;
+  //use delete;
 
   use action Edit;
   use action Activate;
   use action Discard;
   use action Resume;
   use action Prepare;
+  use action CustomDelete;
+
+  use function GetDefaultsForCreate;
+
 
 }

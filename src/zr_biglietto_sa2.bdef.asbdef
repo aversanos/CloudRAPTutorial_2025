@@ -1,5 +1,5 @@
 managed implementation in class ZBP_R_BIGLIETTO_SA2 unique;
-strict( 2 );
+strict ( 2 );
 with draft;
 extensible;
 define behavior for ZR_BIGLIETTO_SA2 alias ZrBigliettoSa2
@@ -12,16 +12,19 @@ authorization master ( global )
 early numbering
 {
 
+
+  field ( features : instance ) Status;
+
   field ( readonly )
   CreatedBy,
   CreatedAt,
   ChangedBy,
   ChangedAt,
-  Locallastchanged;
+  Locallastchanged,
+  ID;
 
-  field ( readonly ) ID;
 
-  create;
+  create { default function GetDefaultsForCreate; }
   update;
   delete;
 
@@ -29,7 +32,13 @@ early numbering
   draft action Discard;
   draft action Edit;
   draft action Resume;
-  draft determine action Prepare;
+  draft determine action Prepare { validation CheckStatus; }
+  action ( features : instance ) CustomDelete result [1] $self;
+  determination onSave on save { create; }
+  validation CheckStatus on save { field Status; create; }
+
+
+
 
   mapping for zbiglietto_sa2 corresponding extensible
     {
@@ -40,6 +49,7 @@ early numbering
       Nome             = nome;
       Cognome          = cognome;
       Locallastchanged = locallastchanged;
+      Status           = status;
     }
 
 }
