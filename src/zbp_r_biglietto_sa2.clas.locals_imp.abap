@@ -15,6 +15,8 @@ CLASS lhc_zrbigliettosa2 DEFINITION INHERITING FROM cl_abap_behavior_handler.
       IMPORTING keys FOR zrbigliettosa2~onsave.
     METHODS customdelete FOR MODIFY
       IMPORTING keys FOR ACTION zrbigliettosa2~customdelete RESULT result.
+    METHODS earlynumbering_cba_componenti FOR NUMBERING
+      IMPORTING entities FOR CREATE zrbigliettosa2\_componenti.
 
     METHODS earlynumbering_create FOR NUMBERING
       IMPORTING entities FOR CREATE ZrBigliettoSa2.
@@ -169,7 +171,65 @@ CLASS lhc_zrbigliettosa2 IMPLEMENTATION.
     RESULT DATA(et_biglietto2).
 
     result = VALUE #( FOR line IN et_biglietto2 ( %tky   = line-%tky
-                                                              %param = line ) ).
+                                                  %param = line ) ).
+
+  ENDMETHOD.
+
+  METHOD earlynumbering_cba_Componenti.
+    DATA:
+       ls_mapped LIKE LINE OF mapped-componenti.
+    READ ENTITIES OF zr_biglietto_sa2
+    IN LOCAL MODE
+    ENTITY ZrBigliettoSa2 BY \_Componenti
+    ALL FIELDS WITH
+            VALUE #( FOR line
+            IN entities
+            (
+                id = line-id
+                %is_draft = line-%is_draft
+            )
+    )
+    RESULT DATA(et_componenti).
+
+    SELECT MAX( Counter )
+   FROM @et_componenti AS travel
+   INTO @DATA(lv_progr).
+
+    LOOP AT entities
+            INTO DATA(ls_entity).
+      LOOP AT ls_entity-%target
+          INTO DATA(target).
+        lv_progr += 1.
+        CLEAR ls_mapped.
+        ls_mapped-%cid        = target-%cid.
+        ls_mapped-%is_draft   = target-%is_draft.
+        ls_mapped-id = target-id.
+        ls_mapped-Counter = lv_progr.
+        APPEND ls_mapped
+            TO mapped-componenti.
+      ENDLOOP.
+    ENDLOOP.
+
+*Components
+*%cid    type abp_behv_cid
+*%is_draft   type abp_behv_flag
+*id  type zid_biglietto
+*counter type n length 10
+
+*    IF et_componenti IS NOT INITIAL.
+*      SORT et_componenti BY id counter D.
+*      DELETE ADJACENT DUPLICATES FROM et_componenti
+*      COMPARING id.
+*      LOOP AT et_componenti INTO DATA(ls_entities).
+*        ls_target-Counter = 1.
+*        APPEND VALUE #( % = ls_target-
+*                  %is_draft = ls_target-%is_draft
+*                  id = ls_entity-id
+*                  counter =  ls_target-Counter
+*                   ) TO mapped-componenti.
+*      ENDLOOP.
+*    ENDIF.
+
 
   ENDMETHOD.
 

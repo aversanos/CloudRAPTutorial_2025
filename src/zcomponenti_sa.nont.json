@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "SAP Object Node Type ZCOMPONENTI_SA",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "name": "ZCOMPONENTI_SA",
+  "sapObjectType": "ZCOMPONENTI_SA",
+  "rootNode": true
+}

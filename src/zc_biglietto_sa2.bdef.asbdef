@@ -19,6 +19,11 @@ use etag
   use action CustomDelete;
 
   use function GetDefaultsForCreate;
+  use association _Componenti{ create; with draft; }
 
-
+}
+define behavior for ZC_COMPONENTI_SA alias Componenti
+{
+  use update;
+  use association _Biglietto { with draft; }
 }

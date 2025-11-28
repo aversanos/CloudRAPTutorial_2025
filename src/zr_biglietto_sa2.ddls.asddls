@@ -4,6 +4,7 @@
 @EndUserText.label: '###GENERATED Core Data Service Entity'
 define root view entity ZR_BIGLIETTO_SA2
   as select from zbiglietto_sa2
+  composition [0..*] of ZR_COMPONENTI_SA as _Componenti
 {
   key id as ID,
   @Semantics.user.createdBy: true
@@ -18,5 +19,6 @@ define root view entity ZR_BIGLIETTO_SA2
   cognome as Cognome,
   @Semantics.systemDateTime.localInstanceLastChangedAt: true
   locallastchanged as Locallastchanged,
-  status as Status
+  status as Status,
+  _Componenti
 }

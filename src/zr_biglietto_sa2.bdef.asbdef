@@ -38,7 +38,7 @@ early numbering
   validation CheckStatus on save { field Status; create; }
 
 
-
+  association _Componenti { create; with draft; }
 
   mapping for zbiglietto_sa2 corresponding extensible
     {
@@ -50,6 +50,51 @@ early numbering
       Cognome          = cognome;
       Locallastchanged = locallastchanged;
       Status           = status;
+    }
+
+}
+
+define behavior for ZR_COMPONENTI_SA alias Componenti
+persistent table zcomponenti_sa
+extensible
+draft table zcomponenti_sa_d
+//etag master Locallastchanged
+etag dependent
+//lock master total etag ChangedAt
+lock dependent
+authorization dependent
+early numbering
+{
+//  field ( mandatory : create )
+//  Counter;
+
+  field ( readonly )
+  CreatedBy,
+  CreatedAt,
+  ChangedBy,
+  ChangedAt,
+  ID,
+  Counter;
+
+//  field ( readonly : update  )
+//  Counter;
+
+
+  update;
+  delete;
+
+
+  association _Biglietto { with draft; }
+
+  mapping for zcomponenti_sa corresponding extensible
+    {
+      ID        = id;
+      Counter   = counter;
+      UserType  = user_type;
+      CreatedBy = created_by;
+      CreatedAt = created_at;
+      ChangedBy = changed_by;
+      ChangedAt = changed_at;
     }
 
 }

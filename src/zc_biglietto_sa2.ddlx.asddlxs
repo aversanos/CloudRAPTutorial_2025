@@ -13,6 +13,14 @@ annotate view ZC_BIGLIETTO_SA2 with
     purpose: #STANDARD,
     position: 10 ,
     type: #IDENTIFICATION_REFERENCE
+  },
+  {
+    label: 'Componenti',
+    id: 'Componenti',
+    purpose: #STANDARD,
+    type: #LINEITEM_REFERENCE,
+    position: 20,
+    targetElement: '_Componenti'
   } ]
   @UI.lineItem: [ {
     position: 10 ,

@@ -36,5 +36,6 @@ define root view entity ZC_BIGLIETTO_SA2
       }
       Locallastchanged,
       Status,
-      _BaseEntity
+      _BaseEntity,
+      _Componenti : redirected to composition child ZC_COMPONENTI_SA 
 }

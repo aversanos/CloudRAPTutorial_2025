@@ -1,0 +1,5 @@
+CLASS zcl_componenti_behv DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zr_biglietto_sa2.
+ENDCLASS.
+
+CLASS zcl_componenti_behv IMPLEMENTATION.
+ENDCLASS.
